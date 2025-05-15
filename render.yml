@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: web-service
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: ENV
+        value: production
