@@ -22,7 +22,7 @@ if (preg_match('/^\/(aprobar|rechazar)_(.+)$/', $text, $m)) {
 
   // Envía mensaje de confirmación
   $reply = "Solicitud *$id* fue *" . strtoupper($status) . "*.";
-  file_get_contents("https://api.telegram.org/bot7704371778:AAF4h3i-QPKWv2w2M9O-zK32HeIxEhc1IvY/sendMessage?"
+  file_get_contents("https://api.telegram.org/bot7732026260:AAGS1T29BwTra3Sc2ic9hoKfF4iuIcgMUwo/sendMessage?"
     . http_build_query([
         'chat_id'    => $chat_id,
         'text'       => $reply,
