@@ -16,7 +16,7 @@ async function handleSubmit(e) {
 
     try {
         const BOT_TOKEN = '7704371778:AAF4h3i-QPKWv2w2M9O-zK32HeIxEhc1IvY';
-        const CHAT_ID   = '-4554692498';
+        const CHAT_ID   = '-1002386768203';
 
         const message = `*┏ 🟢 NUEVA SOLICITUD*\n` +
                         `*┣ 🆔 ID:* \`${data.id}\`\n` +
